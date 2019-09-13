@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="ro-ear:ear exploded">
+    <output-path>$PROJECT_DIR$/ro-ear/target/ro-ear</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>ro-ear</module>
+        <packaging>ear</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ro-ear/javaeeApplication/JavaEE" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/ro-ear/target/ro-ear/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="archive" name="ro-web.war">
+        <element id="artifact" artifact-name="ro-web:war exploded" />
+      </element>
+    </root>
+  </artifact>
+</component>

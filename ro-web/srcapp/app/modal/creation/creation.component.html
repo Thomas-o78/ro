@@ -1,0 +1,55 @@
+<div class="modal-header " >
+  <h6 class="modal-title" style="" [innerText]="title"></h6>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true" class ="croix" >&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div [innerHtml]="body"></div>
+      <div class="card">
+        <div class="card-body" >
+                <h3>Ajouter un nouveau secteur activité</h3>
+          <hr>
+           <div class="group">
+          <input type="text" #ref2 required>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Code <span class="-asterisk">*</span> </label>
+        </div>
+
+          <div class="group">
+            <input type="text" #ref maxlength="30" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Libelle court <span  class="-asterisk">*</span> </label>
+          </div>
+
+          <div class="group">
+            <input type="text" #ref3 maxlength="100" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Libelle long <span  class="-asterisk">*</span> </label>
+          </div>
+
+
+
+          <span  class="-asterisk">*</span> <small>Champs obligatoires</small> <br><br><br>
+
+          <div class = "commentaire">
+            Votre commentaire : <br>
+          <textarea class="commentaireArea"type="textarea" placeholder="Ajouter un commentaire" maxlength="500"  #ref4></textarea> </div>
+
+
+          <div class="button"*ngIf=!remplie(ref,ref2,ref3)> <button type="submit" class="btn btn-outline-danger btn-lg" disabled  >Valider</button></div>
+          <div class="button"*ngIf=remplie(ref,ref2,ref3)> <button type="submit" class="btn btn-outline-success btn-lg" (click)="addRef(ref,ref2,ref3,ref4)" (click)="activeModal.dismiss(null)" (click)="save(ref)"  >Valider</button></div>
+          <button type="button" class="btn btn-outline-secondary btn-lg" (click)="annuler(ref,ref2,ref3,ref4)" style="margin: 20px; float: right"  >Annuler</button>
+
+
+        </div>
+      </div>
+    </div>
+<div class="modal-footer">
+
+  <button type="button" class="btn btn-outline-secondary btn-sm" (click)="activeModal.dismiss(null)"><i class="fa fa-times" aria-hidden="true"></i>Annuler</button>
+</div>
+

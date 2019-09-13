@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="ro-ear:ear">
+    <output-path>$PROJECT_DIR$/ro-ear/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>ro-ear</module>
+        <packaging>ear</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="ro-ear.ear">
+      <element id="artifact" artifact-name="ro-ear:ear exploded" />
+    </root>
+  </artifact>
+</component>

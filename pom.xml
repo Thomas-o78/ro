@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>fr.smabtp.s4p</groupId>
+        <artifactId>s4p-parent</artifactId>
+        <version>3.2.0</version>
+    </parent>
+
+    <name>Projet RO </name>
+    <groupId>fr.smabtp.ro</groupId>
+    <artifactId>ro-parent</artifactId>
+    <version>1.0.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <s4p.version>3.2.0</s4p.version>
+        <s4p.web.version>3.2.0.2</s4p.web.version>
+        <s4p.ws.version>3.2.0.4</s4p.ws.version>
+        <smabtp.habilitations.version>1.0.0</smabtp.habilitations.version>
+        <mire.core.version>1.4.0</mire.core.version>
+        <db2jcc.version>9.5-FP6a</db2jcc.version>
+        <skipTests>true</skipTests>
+    </properties>
+
+    <modules>
+
+        <module>ro-web</module>
+        <module>ro-metier</module>
+        <module>ro-ear</module>
+
+    </modules>
+
+    <profiles>
+        <profile>
+            <id>disable-java8-doclint</id>
+            <activation>
+                <jdk>[1.8,)</jdk>
+            </activation>
+            <properties>
+                <additionalparam>-Xdoclint:none</additionalparam>
+            </properties>
+        </profile>
+    </profiles>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>fr.smabtp.s4p</groupId>
+                <artifactId>s4p-core</artifactId>
+                <version>${s4p.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ibm.db2</groupId>
+                <artifactId>db2jcc</artifactId>
+                <version>${db2jcc.version}</version>
+                <scope>compile</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <!-- On force la version du plugin scm car la dernière version a des bugs -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.2</version>
+                <!-- Pour ne pas push sur Nexus (on force le goal du release à install -->
+                <configuration>
+                    <releaseProfiles>release</releaseProfiles>
+                    <goals>install</goals>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-gitexe</artifactId>
+                        <version>1.9.4</version>
+                    </dependency>
+
+                </dependencies>
+            </plugin>
+            <!-- On force la version du plugin javadoc car la dernière version est incompatible avec le projet -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.2</version>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.0.2</version>
+                    <configuration>
+                        <source>1.6</source>
+                        <target>1.6</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ro-web:war">
+    <output-path>$PROJECT_DIR$/ro-web/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>ro-web</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="ro-web-1.0.0.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ro-web:war exploded" />
+    </root>
+  </artifact>
+</component>

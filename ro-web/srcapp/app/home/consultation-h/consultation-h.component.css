@@ -1,0 +1,11 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+body {
+  padding: 20px;
+}
+
+
+.btn{
+  margin: 10px;
+  background:#0077c3;
+  color:white
+}
